@@ -1,0 +1,25 @@
+{
+  "name": "campusdevmatch",
+  "version": "1.0.0",
+  "description": "Helps to find teammates for coding or Development. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node src/app.js",
+    "dev" : "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artiwari10/CampusDevMatch.git"
+  },
+  "author": "Anmol Ratan Tiwari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artiwari10/CampusDevMatch/issues"
+  },
+  "homepage": "https://github.com/artiwari10/CampusDevMatch#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  }
+}
