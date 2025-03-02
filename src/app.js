@@ -1,4 +1,14 @@
 const express = require("express");
+const connectDB = require("./config/database");
+connectDB().then(()=>{
+  console.log("Connection Successful");
+  app.listen(8888, () => {
+    console.log("Server is running on port 8888");
+  });
+}).catch((err)=>{
+  console.log("Connection Failed");
+});
+
 const app = express();
 app.use("/home",(req,res)=>{
   res.send("welcome to the homepage");
@@ -6,13 +16,8 @@ app.use("/home",(req,res)=>{
 
 app.get("/user",(req,res,next)=>{
   //This is a route handler
-  next();
 // res.send("Sending from respond");
-
-  },
-  (req,res,next)=>{
-   // res.send("Sending from respond 2nd rout handler");
-    next();
+  res.send("This is it");
   });
 
 app.use("/login",(req,res)=>{
@@ -24,6 +29,3 @@ app.use("/login",(req,res)=>{
   app.use("/feed",(req,res)=>{
     res.send("Swipe Left and Right");
   });
-app.listen(8888, () => {
-  console.log("Server is running on port 8888");
-});
