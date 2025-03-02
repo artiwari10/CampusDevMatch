@@ -3,9 +3,18 @@ const app = express();
 app.use("/home",(req,res)=>{
   res.send("welcome to the homepage");
 });
-app.use("/",(req,res)=>{
-    console.log("Welcome to dashmode");
-});
+
+app.get("/user",(req,res,next)=>{
+  //This is a route handler
+  next();
+// res.send("Sending from respond");
+
+  },
+  (req,res,next)=>{
+   // res.send("Sending from respond 2nd rout handler");
+    next();
+  });
+
 app.use("/login",(req,res)=>{
     res.send("Enter your username and password");
   });
