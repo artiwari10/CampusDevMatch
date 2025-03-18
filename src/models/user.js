@@ -1,45 +1,8 @@
-<<<<<<< HEAD
-const mongoose = require('mongoose');
-const userSchema = new mongoose.Schema({
-    firstName: {
-        type: String,
-        required: true
-    },
-    middleName : {
-        type : String,
-        required : false
-    },
-    lastName: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique : true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    age: {
-        type: Number,
-        required: true
-    },
-    gender :{
-        type : String,
-        required : true
-    }
-});
-
-const User = mongoose.model("User", userSchema);
-module.exports = User;
-=======
 const mongoose = require("mongoose");
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-
+require('dotenv').config()
 const userSchema = new mongoose.Schema(
   {
     firstName: {
@@ -49,10 +12,15 @@ const userSchema = new mongoose.Schema(
       maxLength: 50,
     },
     middleName : {
-      type : String,
+      type: String,
+      minLength: 4,
+      maxLength: 50,
     },
     lastName: {
       type: String,
+      required: true,
+      minLength: 4,
+      maxLength: 50,
     },
     emailId: {
       type: String,
@@ -81,11 +49,13 @@ const userSchema = new mongoose.Schema(
     },
     gender: {
       type: String,
-      validate(value) {
-        if (!["male", "female", "others"].includes(value)) {
-          throw new Error("Gender data is not valid");
-        }
+      required: true,
+      lowercase: true,
+      enum: {
+        values: ["male", "female", "other"],
+        message: `{VALUE} is not a valid gender type`,
       },
+      
     },
     photoUrl: {
       type: String,
@@ -100,9 +70,28 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "This is a default about of the user!",
     },
+    college : {
+      type: String,
+      required: true,
+
+    },
+    year : {
+      type: Number,
+      required: true,
+    },
     skills: {
       type: [String],
     },
+    number : {
+      type : String,
+      required : true,
+      unique : true,
+      validate(value) {
+        if (!validator.isMobilePhone(value)) {
+          throw new Error("Invalid Mobile Number: " + value);
+        }
+      },
+    }
   },
   {
     timestamps: true,
@@ -112,8 +101,8 @@ const userSchema = new mongoose.Schema(
 userSchema.methods.getJWT = async function () {
   const user = this;
 
-  const token = await jwt.sign({ _id: user._id }, "art10", {
-    expiresIn: "7d",
+  const token = await jwt.sign({ _id: user._id }, process.env.JWTKEY, {
+    expiresIn: "4d",
   });
 
   return token;
@@ -132,4 +121,3 @@ userSchema.methods.validatePassword = async function (passwordInputByUser) {
 };
 
 module.exports = mongoose.model("User", userSchema);
->>>>>>> d6eb91d (Backend Complete (Feed, COnnection))

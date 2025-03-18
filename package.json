@@ -1,30 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "campusdevmatch",
-  "version": "1.0.0",
-  "description": "Helps to find teammates for coding or Development. ",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/artiwari10/CampusDevMatch.git"
-  },
-  "author": "Anmol Ratan Tiwari",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/artiwari10/CampusDevMatch/issues"
-  },
-  "homepage": "https://github.com/artiwari10/CampusDevMatch#readme",
-  "dependencies": {
-    "express": "^4.21.2",
-    "mongoose": "^8.11.0",
-    "nodemon": "^3.1.9"
-=======
-  "name": "devtinder",
   "version": "1.0.0",
   "description": "tinder for devs",
   "main": "index.js",
@@ -36,15 +11,23 @@
     "nodejs",
     "javascript"
   ],
-  "author": "Akshay Saini",
+  "author": "Anmol Ratan Tiwari",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "cookie-parser": "^1.4.7",
-    "express": "^4.21.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.7",
+    "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.12.1",
+    "mongoose": "^8.6.1",
     "validator": "^13.12.0"
->>>>>>> d6eb91d (Backend Complete (Feed, COnnection))
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artiwari10/CampusDevMatch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/artiwari10/CampusDevMatch/issues"
+  },
+  "homepage": "https://github.com/artiwari10/CampusDevMatch#readme"
 }

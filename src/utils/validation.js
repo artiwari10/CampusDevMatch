@@ -11,18 +11,26 @@ const validateSignUpData = (req) => {
   }
 };
 
-const validateLoginData = (req) => {
-  const allowedField = 
-  ["firstName","middleName","lastName","age","gender","about","skills","photoUrl"];
-  const isValidField =
-   Object.keys(req.body).every(field => allowedField.includes(field));
+const validateEditProfileData = (req) => {
+  const allowedEditFields = [
+    "firstName",
+    "lastName",
+    "emailId",
+    "photoUrl",
+    "gender",
+    "age",
+    "about",
+    "skills",
+  ];
 
-  if(!isValidField){
-    throw new Error("Invalid Field");
-  }
-  else return true;
+  const isEditAllowed = Object.keys(req.body).every((field) =>
+    allowedEditFields.includes(field)
+  );
 
+  return isEditAllowed;
 };
+
 module.exports = {
-  validateSignUpData, validateLoginData
+  validateSignUpData,
+  validateEditProfileData,
 };

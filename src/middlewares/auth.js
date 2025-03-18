@@ -1,14 +1,14 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
-
+require('dotenv').config()
 const userAuth = async (req, res, next) => {
   try {
     const { token } = req.cookies;
     if (!token) {
-      throw new Error("Token is not valid!!!!!!!!!");
+      throw new Error("Invalid Token");
     }
 
-    const decodedObj = await jwt.verify(token, "art10");
+    const decodedObj = await jwt.verify(token, process.env.JWTKEY);
 
     const { _id } = decodedObj;
 
